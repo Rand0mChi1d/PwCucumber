@@ -3,17 +3,19 @@ const { LoginPage } = require('../page-objects/login-page')
 
 const loginPage = new LoginPage()
 
-defineStep('I visit a login page', async function () {
+Given('I visit a login page', async function () {
   await loginPage.navigateToLoginScreen()
 })
 
-defineStep('I fill the login form with valid credentials', async function () {
+When('I fill the login form with valid credentials', async function () {
   await loginPage.submitLoginForm()
 })
 
-defineStep('I should see the home page', async function () {
+Then('I should see the home page', async function () {
   await loginPage.assertUserIsLoggedIn()
 })
+// Given, When, Then can be substituted with defineStep, which is underneath anyway
+// You may leave your gherkin codewords for readability purposes
 
 defineStep('I wait for 3 seconds', async function () {
   await loginPage.pause()
